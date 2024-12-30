@@ -102,7 +102,7 @@ class CaptureResult(TypedDict):
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request to improve the library.
+Contributions are welcome! Please open an issue or submit a pull request to improve the [library](https://github.com/measurely-dev/measurely-py.git).
 
 ## License
 
