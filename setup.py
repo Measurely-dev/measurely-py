@@ -1,11 +1,17 @@
 from setuptools import find_packages, setup
+from pathlib import Path
+
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="measurely-py",
     version="0.1.0",
     packages=find_packages(include=["measurely"]),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     description="A Python library for interacting with the Measurely API",
-    author="YasTheGoat, afz",
+    author="Measurely-dev, YasTheGoat, afz",
     author_email="",
     url="https://github.com/measurely-dev/measurely-py",
     classifiers=[
@@ -17,9 +23,5 @@ setup(
         "requests",
     ],
     python_requires=">=3.6",
-    project_urls={
-        "Author 1": "https://github.com/yasthegoat",
-        "Author 2": "https://github.com/zxk-afz",
-    },
     license="MIT",
 )
