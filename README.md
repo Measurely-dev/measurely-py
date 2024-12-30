@@ -107,7 +107,3 @@ Contributions are welcome! Please open an issue or submit a pull request to impr
 ## License
 
 This library is licensed under the MIT License.
-
----
-
-This format mirrors the documentation style from the Golang and JavaScript packages while being adjusted for the Python code. Let me know if you need any changes!
