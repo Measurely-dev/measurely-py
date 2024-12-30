@@ -21,7 +21,7 @@ class Measurely:
     @staticmethod
     def init(NEW_API_KEY: str):
         """
-        Initializes the Measurely package with your API key.
+        Initializes the Measurely package with your application API key.
         This method must be called before using other functions.
         """
         Measurely.api_key = NEW_API_KEY
