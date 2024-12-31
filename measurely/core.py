@@ -13,6 +13,7 @@ class CaptureResult(TypedDict):
     message: str  # Contains the server's response or an error message
 
 
+
 # The Measurely class provides methods for interacting with the Measurely API
 class Measurely:
     # Class variable to store the API key
@@ -40,10 +41,9 @@ class Measurely:
         """
         # Check if the API key is set, if not, return an error message
         if Measurely.api_key == "":
-            return {
-                "success": False,
-                "message": "Missing API KEY, please call the init function",
-            }
+            return CaptureResult(
+                success=False, message="Missing API KEY, please call the init function"
+            )
 
         # Send the metric data to the Measurely API
         response = request(
@@ -62,4 +62,4 @@ class Measurely:
             success = True
 
         # Return the result of the API call
-        return {"success": success, "message": response.text}
+        return CaptureResult(success=success, message=response.text)
