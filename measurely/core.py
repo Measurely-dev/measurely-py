@@ -1,10 +1,11 @@
-from typing import TypedDict
+from typing import Dict, TypedDict
 from requests import request
 
 
 # Define the structure for the metric payload to be sent to the API
 class CapturePayload(TypedDict):
     value: int  # The metric value to be recorded
+    filters : Dict[str, str] # Optional filters for categorizing the metric.
 
 
 # Define the structure for the result returned from the API after capturing a metric

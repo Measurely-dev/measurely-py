@@ -25,9 +25,9 @@ Measurely.init("YOUR_API_KEY")
 
 ### 2. Send a Metric (Capture)
 
-The `capture` method is used to send metric data to Measurely. You need to pass the metric identifier (which is a unique name or ID for the metric) and the metric value you want to track.
+The `capture` method is used to send metric data to Measurely. You need to pass the metric identifier (which is a unique name or ID for the metric) and the metric value you want to track. You can also pass filters in the `CapturePayload` to categorize or refine your metric data.
 
-#### Example of sending a metric
+#### Example of sending a metric with filters
 
 ```python
 from measurely import Measurely, CapturePayload
@@ -35,8 +35,11 @@ from measurely import Measurely, CapturePayload
 # Initialize the Measurely package with your API key
 Measurely.init("YOUR_API_KEY")
 
-# Create a metric payload
-payload = CapturePayload(value=42)
+# Create a metric payload with filters
+payload = CapturePayload(
+    value=42,
+    filters={"region": "US", "device": "mobile"}
+)
 
 # Capture the metric and get the result
 result = Measurely.capture("example_metric", payload)
@@ -69,7 +72,7 @@ The `capture` method returns a `CaptureResult` dictionary that contains two fiel
 - **Description**: Sends a metric value to Measurely for tracking.
 - **Parameters**:
   - `metric_identifier`: The unique identifier for the metric you are capturing.
-  - `payload`: A `CapturePayload` object that contains the metric value to be recorded.
+  - `payload`: A `CapturePayload` object that contains the metric value and optional filters to categorize the metric.
 - **Returns**: A `CaptureResult` dictionary that contains the success status and response message.
 
 ### Types
@@ -81,11 +84,13 @@ from typing import TypedDict
 
 class CapturePayload(TypedDict):
     value: int  # The metric value to be recorded.
+    filters: dict[str, str]  # Optional filters to categorize the metric.
 ```
 
-- **Description**: This class defines the data payload that is sent to the Measurely API when capturing a metric.
+- **Description**: This class defines the data payload that is sent to the Measurely API when capturing a metric. You can include filters as a dictionary of key-value pairs to add metadata to the metric.
 - **Fields**:
   - `value` (int): The metric value that you want to track.
+  - `filters` (dict[str, str]): Optional filters for categorizing the metric. This can include any custom key-value pairs.
 
 #### `CaptureResult`
 
